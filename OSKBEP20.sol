@@ -6,8 +6,9 @@ import "./Ownable.sol";
 
 contract OSkToken is ERC20 , Ownable {
 
-    constructor(address masterWallet) ERC20("OSK Token", "OSK") {
+    constructor(address masterWallet) ERC20("OSK Token", "OSK") Ownable(masterWallet) {
 
+        require(masterWallet != address(0),"OSkToken: masterWallet is the zero address");
         _mint(masterWallet,200000000*10**uint256(decimals()));
         
     }
